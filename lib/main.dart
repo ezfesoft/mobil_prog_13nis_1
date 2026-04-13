@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -33,6 +35,9 @@ class _MyHomePageState extends State<MyHomePage> {
   //-------------------------------
   //--------------Değişkenler Bu Alana Yazılacak
   //-------------------------------
+  String metin = "Merhaba";
+  int sayi = 0;
+
   //-------------------------------
   //-------------------------------
   //-------------------------------
@@ -57,6 +62,81 @@ class _MyHomePageState extends State<MyHomePage> {
             //------------------------------------
             //------------------------------------
             //------------------------------------
+            ElevatedButton(
+              onPressed: () {
+                print("Merhaba Flutter. Butona Tıklandı.");
+              },
+              child: Text("BANA TIKLA"),
+            ),
+            ElevatedButton.icon(
+              onPressed: sayi == 0
+                  ? null
+                  : () {
+                      print('test');
+                    },
+
+              icon: Icon(Icons.send),
+              label: Text("Gönder"),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blueAccent,
+                foregroundColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+            ),
+            SizedBox(height: 20),
+
+            ElevatedButton.icon(
+              onPressed: () {
+                sayi++;
+              },
+              label: Text("ARTIR"),
+              icon: Icon(Icons.add),
+            ),
+
+            SizedBox(height: 20),
+            Text(sayi.toString()),
+            SizedBox(height: 20),
+
+            ElevatedButton.icon(
+              onPressed: () {
+                setState(() {
+                  sayi--;
+                });
+              },
+              label: Text("AZALT"),
+              icon: Icon(Icons.remove),
+            ),
+
+            SizedBox(height: 20),
+            Text(metin, style: TextStyle(fontSize: 30)),
+
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  metin = "Tek Tıklama";
+                });
+              },
+              onDoubleTap: () {
+                setState(() {
+                  metin = "Çift Tıklama";
+                });
+              },
+              onLongPress: () {
+                setState(() {
+                  metin = "Uzun Tıklama";
+                });
+              },
+              child: Container(
+                color: Colors.amber,
+                height: 45,
+                width: 165,
+                alignment: Alignment.center,
+                child: Container(width: 15, height: 75, color: Colors.red),
+              ),
+            ),
+
             //------------------------------------
             //------------------------------------
             //------------------------------------
